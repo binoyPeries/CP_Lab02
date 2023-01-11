@@ -33,8 +33,8 @@ public class RiderGenerator implements Runnable {
     }
 
     private long getRiderArrivalInterval() {
-        float lambda = 1 / meanRiderArrivalTime;
+        float lambda = 1 / (1000 * meanRiderArrivalTime);
         float u = 1.0f - randomGenerator.nextFloat();
-        return Math.round(-Math.log(u) / lambda) * 1000;
+        return Math.round(-Math.log(u) / lambda) ;
     }
 }

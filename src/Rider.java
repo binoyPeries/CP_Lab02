@@ -16,9 +16,9 @@ public class Rider implements Runnable {
             Semaphore mutex = busStop.getWaitingMutex();
             Semaphore busSemaphore = busStop.getBusSemaphore();
             Semaphore boardedSemaphore = busStop.getBoardedSemaphore();
-
             mutex.acquire();
             busStop.incrementWaitingRiders();
+            arrive();
             mutex.release();
 
             busSemaphore.acquire();
@@ -28,6 +28,10 @@ public class Rider implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    void arrive() {
+        System.out.println("Rider number " + riderNumber + " has arrived at the bus stop.");
     }
 
     void board() {

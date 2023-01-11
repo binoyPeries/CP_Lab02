@@ -27,7 +27,7 @@ public class Bus implements Runnable {
                 busSemaphore.release();
                 boardedSemaphore.acquire();
             }
-            busStop.setWaitingRiders(Math.max(0, 50 - waitingRiders));
+            busStop.setWaitingRiders(Math.max(0, waitingRiders - 50));
             mutex.release();
             depart();
         } catch (InterruptedException e) {
@@ -38,6 +38,7 @@ public class Bus implements Runnable {
     void arrive() {
         System.out.println("Bus " + busNumber + " has arrived.");
     }
+
     void depart() {
         System.out.println("Bus " + busNumber + " has departed.");
     }

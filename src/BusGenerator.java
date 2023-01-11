@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class BusGenerator implements Runnable{
+public class BusGenerator implements Runnable {
 
     private final float meanBusArrivalTime;
     private final BusStop busStop;
@@ -42,8 +42,8 @@ public class BusGenerator implements Runnable{
 //    λ = 1/mean
 
     private long getBusArrivalInterval() {
-        float lambda = 1/meanBusArrivalTime;
+        float lambda = 1 / (1000 * meanBusArrivalTime);
         float u = 1.0f - randomGenerator.nextFloat();
-        return Math.round(-Math.log(u) / lambda) * 1000;
+        return Math.round(-Math.log(u) / lambda);
     }
 }
